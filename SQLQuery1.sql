@@ -1,4 +1,5 @@
-﻿--Select
+﻿use Northwind
+--Select
 Select ContactName Adi, CompanyName Sirketadi, City Sehir from Customers
 
 select * from Customers where City='Berlin'
@@ -43,10 +44,9 @@ on o.OrderID=od.OrderID
 --Sonuç aşağıdaki formatta olmalıdır.
 --Ürün Adı, Kazanılan Toplam Miktar
 Select ProductName 'Ürün Adı', Sum(od.Quantity*od.UnitPrice) 'Kazanılan Toplam Miktar' 
-from [Order Details] od inner join Products p
-on p.ProductID=od.ProductID 
-inner join Orders o
-on o.OrderID=od.OrderID
+from [Order Details] od 
+inner join Products p on p.ProductID=od.ProductID 
+inner join Orders o on o.OrderID=od.OrderID
 group by p.ProductName
 order by ProductName
 
